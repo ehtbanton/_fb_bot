@@ -95,6 +95,9 @@ def update_cell(date_str, voice_part, text="", colour="green"):
         text (str): Text to display in the cell
         colour (str): Cell color - "green", "yellow", "black" or any valid hex color
     """
+
+    success = True
+
     # Load the workbook
     file_path = "dep_calendar.xlsx"
     if not os.path.isfile(file_path):
@@ -156,18 +159,20 @@ def update_cell(date_str, voice_part, text="", colour="green"):
     
     if not found:
         print(f"Week containing date {date_str} not found in calendar")
-        return
+        success = False
+        return success
     
     # Find the column for this date (C=Monday, D=Tuesday, etc.)
     target_col = target_weekday + 3  # +3 because we start from column C
     
     # Find the row for this voice part
     try:
-        voice_idx = voice_parts.index(voice_part)
+        voice_idx = voice_parts.index(voice_part.upper())
         target_row = week_start_row + 1 + voice_idx
     except ValueError:
         print(f"Voice part {voice_part} not found")
-        return
+        success = False
+        return success
     
     # Update the cell
     cell = sheet.cell(row=target_row, column=target_col)
@@ -194,6 +199,8 @@ def update_cell(date_str, voice_part, text="", colour="green"):
     # Save the workbook
     wb.save(file_path)
     print(f"Updated cell for {voice_part} on {date_str} to {colour} with text '{text}'")
+
+    return success
 
 # Example usage:
 # update_sheet_range()  # Update/create the calendar

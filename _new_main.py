@@ -391,6 +391,9 @@ def monitor_conversation(driver):
             time.sleep(1)  # Wait longer if there's an error
 
 def main():
+
+    print("Starting script...")
+
     # Setup driver
     driver = setup_driver(headless=False)
     
