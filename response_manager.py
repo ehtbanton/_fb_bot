@@ -47,4 +47,7 @@ def craft_response(message):
             return response
         response = "Ok, I've cancelled your booking for " + voice_part + " on " + date_str + "."
 
+    else:
+        response = "Sorry, I don't understand that. Please try again."
+
     return response
