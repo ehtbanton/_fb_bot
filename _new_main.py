@@ -13,6 +13,9 @@ from selenium.webdriver.common.action_chains import ActionChains
 from dotenv import load_dotenv
 
 from response_manager import craft_response  # Import the craft_response function
+from llama_interface import ask_llama, setup_llama
+
+LLAMA_MODEL = setup_llama(model_path=r"C:\Users\anton\llama.cpp\models\Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf")
 
 # Load environment variables from .env file
 load_dotenv()
@@ -108,6 +111,31 @@ def navigate_to_messenger(driver):
         print(f"Failed to navigate to Messenger: {e}")
         return False
 
+def open_most_recent_chat(driver):
+    """Open the most recent conversation in Messenger"""
+    try:
+        # Find all conversations
+        conversations = WebDriverWait(driver, 10).until(
+            EC.presence_of_all_elements_located((By.XPATH, 
+                "//div[@role='row' or contains(@data-testid, 'conversation_list_item')]"))
+        )
+        
+        if not conversations:
+            print("No conversations found")
+            return False
+            
+        # Click on the first (most recent) conversation
+        conversations[0].click()
+        
+        # Wait for messages to load
+        wait_for_messages_to_load(driver)
+        
+        print("Opened most recent chat")
+        return True
+    except Exception as e:
+        print(f"Error opening most recent chat: {e}")
+        return False
+
 def send_message(driver, message):
     """Send a message in the current chat"""
     try:
@@ -140,7 +168,7 @@ def send_message(driver, message):
         actions.perform()
         time.sleep(2)
         
-        print(f"Message '{message}' sent successfully")
+        print(f"\nMessage '{message}' sent successfully")
         return True
     except Exception as e:
         print(f"Failed to send message: {e}")
@@ -163,7 +191,7 @@ def wait_for_messages_to_load(driver):
             # If specific message elements aren't found, just wait a moment
             time.sleep(2)
         
-        print("Messages loaded")
+        #print("\nMessages loaded")
         return True
     except Exception as e:
         print(f"Error waiting for messages: {e}")
@@ -340,9 +368,19 @@ def monitor_conversation(driver):
     # Track conversation state
     last_message_text = ""
     last_response_time = 0
+    last_chat_check_time = 0
+    chat_check_interval = 120  # Check for most recent chat every 2 minutes (120 seconds)
     
     while True:
         try:
+            # Check if it's time to open the most recent chat (every 2 minutes)
+            current_time = time.time()
+            if current_time - last_chat_check_time > chat_check_interval:
+                print("Checking for most recent chat...")
+                open_most_recent_chat(driver)
+                last_chat_check_time = current_time
+                print(f"Next chat check in {chat_check_interval} seconds")
+            
             # Get actual messages
             messages = get_real_messages(driver)
              
@@ -353,38 +391,67 @@ def monitor_conversation(driver):
                 
                 # Skip if this is the same as last processed message
                 if message_text and message_text != last_message_text:
-                    print(f"\nNew message detected: '{message_text[:50]}...'")
+                    print(f"\n\nNew message detected: '{message_text[:50]}...'")
                     
                     # Split the message into lines and check each line
                     lines = message_text.split('\n')
-                    prefixes = ["njb ", "Njb ", "NJB "]
                     
-                    # Check if any line starts with one of the prefixes
-                    matching_line = None
-                    for line in lines:
-                        if any(line.strip().startswith(prefix) for prefix in prefixes):
-                            matching_line = line.strip()
-                            matching_line = matching_line[len(prefixes[0]):].strip()  # Remove prefix
-                            break
+                    # Check conditions for not responding
+                    should_respond = True
                     
-                    if matching_line:
-                        print(f"Found line containing '{matching_line}'. Sending response...")
+                    if len(lines) <= 2:
+                        print("Message has 2 or fewer lines. Not responding.")
+                        should_respond = False
+                    elif lines[0].strip() == "You sent":
+                        print("First line is 'You sent'. Not responding.")
+                        should_respond = False
+                    elif lines[1].strip() == "Sent":
+                        print("Second line is 'Sent'. Not responding.")
+                        should_respond = False
 
-                        response = craft_response(matching_line)
+                    
+                    if should_respond:
+                        last_user = lines[0].split(" ")[0]  # Extract the first word as user name
+
+                        """
+                        prefixes = ["njb ", "Njb ", "NJB "]
+                        # Check if any line starts with one of the prefixes
+                        matching_line = None
+                        for line in lines:
+                            if any(line.strip().startswith(prefix) for prefix in prefixes):
+                                matching_line = line.strip()
+                                matching_line = matching_line[len(prefixes[0]):].strip()  # Remove prefix
+                                break
+
+                        if matching_line:
+                            print(f"Found line containing '{matching_line}'. Sending response...")
+
+                            response = craft_response(matching_line)
+                            send_message(driver, response)
+                            last_response_time = time.time()
+                        else:
+                            print(f"No line starts with any of {prefixes}. Not responding.")
+                        """
+
+                        message = ''.join(lines[1:-1])
+                        print(f"Found line containing '{message}'. Sending response...")
+                ########################################################################################################
+                        system = "The person you are talking to, is called" + last_user + ", and you like them. You're apprehensive to tell this person that you like them though. You are a fashionable, tastefully coquette young lady called Janette. Make sure you talk like a real person, avoiding role-play of any physical actions or noises. Just use direct speech as in a text message)."
+                        response = ask_llama(LLAMA_MODEL, message, system=system, max_tokens=50)
+                ########################################################################################################
                         send_message(driver, response)
                         last_response_time = time.time()
-                    else:
-                        print(f"No line starts with any of {prefixes}. Not responding.")
+
                     
                     # Update last message text
                     last_message_text = message_text
             
-            # Wait before checking again
-            #time.sleep(1)
+            # Very minimal sleep to check more frequently but avoid excessive CPU usage
+            time.sleep(0.5)
             
         except KeyboardInterrupt:
             print("Monitoring stopped by user")
-            # Exit immediately on KeyboardInterrupt - this is the key change
+            # Exit immediately on KeyboardInterrupt
             sys.exit(0)
         except Exception as e:
             print(f"Error during monitoring: {e}")
@@ -405,23 +472,6 @@ def main():
         # Navigate to Messenger
         if not navigate_to_messenger(driver):
             return
-        
-        # Open most recent chat
-        conversations = WebDriverWait(driver, 10).until(
-            EC.presence_of_all_elements_located((By.XPATH, 
-                "//div[@role='row' or contains(@data-testid, 'conversation_list_item')]"))
-        )
-        
-        if not conversations:
-            print("No conversations found")
-            return
-            
-        print(f"Found {len(conversations)} conversations")
-        conversations[0].click()
-        time.sleep(2)
-        
-        # Wait for messages to load
-        wait_for_messages_to_load(driver)
         
         # Start monitoring for responses
         monitor_conversation(driver)

@@ -1,0 +1,155 @@
+2025-05-06 00:20:55,679 - fb_messenger_bot - INFO - Starting Facebook Messenger Bot...
+2025-05-06 00:20:55,680 - fb_messenger_bot - INFO - Logging in to Facebook...
+2025-05-06 00:20:55,680 - client - INFO - Logging in thdissonance@gmail.com...
+2025-05-06 00:20:56,071 - client - ERROR - Attempt #1 failed, retrying
+Traceback (most recent call last):
+  File "C:\Users\anton\AppData\Roaming\Python\Python312\site-packages\fbchat\_client.py", line 205, in login
+    self._state = State.login(
+                  ^^^^^^^^^^^^
+  File "C:\Users\anton\AppData\Roaming\Python\Python312\site-packages\fbchat\_state.py", line 153, in login
+    raise _exception.FBchatUserError(
+fbchat._exception.FBchatUserError: Login failed. Check email/password. (Failed on url: https://m.facebook.com/login.php?login_attempt=1)
+2025-05-06 00:20:57,463 - client - ERROR - Attempt #2 failed, retrying
+Traceback (most recent call last):
+  File "C:\Users\anton\AppData\Roaming\Python\Python312\site-packages\fbchat\_client.py", line 205, in login
+    self._state = State.login(
+                  ^^^^^^^^^^^^
+  File "C:\Users\anton\AppData\Roaming\Python\Python312\site-packages\fbchat\_state.py", line 153, in login
+    raise _exception.FBchatUserError(
+fbchat._exception.FBchatUserError: Login failed. Check email/password. (Failed on url: https://m.facebook.com/login.php?login_attempt=1)
+2025-05-06 00:20:58,835 - client - ERROR - Attempt #3 failed, retrying
+Traceback (most recent call last):
+  File "C:\Users\anton\AppData\Roaming\Python\Python312\site-packages\fbchat\_client.py", line 205, in login
+    self._state = State.login(
+                  ^^^^^^^^^^^^
+  File "C:\Users\anton\AppData\Roaming\Python\Python312\site-packages\fbchat\_state.py", line 153, in login
+    raise _exception.FBchatUserError(
+fbchat._exception.FBchatUserError: Login failed. Check email/password. (Failed on url: https://m.facebook.com/login.php?login_attempt=1)
+2025-05-06 00:21:00,169 - client - ERROR - Attempt #4 failed, retrying
+Traceback (most recent call last):
+  File "C:\Users\anton\AppData\Roaming\Python\Python312\site-packages\fbchat\_client.py", line 205, in login
+    self._state = State.login(
+                  ^^^^^^^^^^^^
+  File "C:\Users\anton\AppData\Roaming\Python\Python312\site-packages\fbchat\_state.py", line 153, in login
+    raise _exception.FBchatUserError(
+fbchat._exception.FBchatUserError: Login failed. Check email/password. (Failed on url: https://m.facebook.com/login.php?login_attempt=1)
+2025-05-06 00:21:01,483 - fb_messenger_bot - ERROR - Facebook chat error: Login failed. Check email/password. (Failed on url: https://m.facebook.com/login.php?login_attempt=1)
+2025-05-06 00:21:01,483 - fb_messenger_bot - INFO - Waiting 30 seconds before reconnecting...
+2025-05-06 00:21:31,485 - fb_messenger_bot - INFO - Logging in to Facebook...
+2025-05-06 00:21:31,485 - client - INFO - Logging in thdissonance@gmail.com...
+2025-05-06 00:21:32,178 - client - ERROR - Attempt #1 failed, retrying
+Traceback (most recent call last):
+  File "C:\Users\anton\AppData\Roaming\Python\Python312\site-packages\fbchat\_client.py", line 205, in login
+    self._state = State.login(
+                  ^^^^^^^^^^^^
+  File "C:\Users\anton\AppData\Roaming\Python\Python312\site-packages\fbchat\_state.py", line 153, in login
+    raise _exception.FBchatUserError(
+fbchat._exception.FBchatUserError: Login failed. Check email/password. (Failed on url: https://m.facebook.com/login.php?login_attempt=1)
+2025-05-06 00:21:33,627 - client - ERROR - Attempt #2 failed, retrying
+Traceback (most recent call last):
+  File "C:\Users\anton\AppData\Roaming\Python\Python312\site-packages\fbchat\_client.py", line 205, in login
+    self._state = State.login(
+                  ^^^^^^^^^^^^
+  File "C:\Users\anton\AppData\Roaming\Python\Python312\site-packages\fbchat\_state.py", line 153, in login
+    raise _exception.FBchatUserError(
+fbchat._exception.FBchatUserError: Login failed. Check email/password. (Failed on url: https://m.facebook.com/login.php?login_attempt=1)
+2025-05-06 00:21:35,076 - client - ERROR - Attempt #3 failed, retrying
+Traceback (most recent call last):
+  File "C:\Users\anton\AppData\Roaming\Python\Python312\site-packages\fbchat\_client.py", line 205, in login
+    self._state = State.login(
+                  ^^^^^^^^^^^^
+  File "C:\Users\anton\AppData\Roaming\Python\Python312\site-packages\fbchat\_state.py", line 153, in login
+    raise _exception.FBchatUserError(
+fbchat._exception.FBchatUserError: Login failed. Check email/password. (Failed on url: https://m.facebook.com/login.php?login_attempt=1)
+2025-05-06 00:21:36,564 - client - ERROR - Attempt #4 failed, retrying
+Traceback (most recent call last):
+  File "C:\Users\anton\AppData\Roaming\Python\Python312\site-packages\fbchat\_client.py", line 205, in login
+    self._state = State.login(
+                  ^^^^^^^^^^^^
+  File "C:\Users\anton\AppData\Roaming\Python\Python312\site-packages\fbchat\_state.py", line 153, in login
+    raise _exception.FBchatUserError(
+fbchat._exception.FBchatUserError: Login failed. Check email/password. (Failed on url: https://m.facebook.com/login.php?login_attempt=1)
+2025-05-06 00:21:37,973 - fb_messenger_bot - ERROR - Facebook chat error: Login failed. Check email/password. (Failed on url: https://m.facebook.com/login.php?login_attempt=1)
+2025-05-06 00:21:37,973 - fb_messenger_bot - INFO - Waiting 30 seconds before reconnecting...
+2025-05-06 00:22:07,975 - fb_messenger_bot - INFO - Logging in to Facebook...
+2025-05-06 00:22:07,975 - client - INFO - Logging in thdissonance@gmail.com...
+2025-05-06 00:22:08,293 - client - ERROR - Attempt #1 failed, retrying
+Traceback (most recent call last):
+  File "C:\Users\anton\AppData\Roaming\Python\Python312\site-packages\fbchat\_client.py", line 205, in login
+    self._state = State.login(
+                  ^^^^^^^^^^^^
+  File "C:\Users\anton\AppData\Roaming\Python\Python312\site-packages\fbchat\_state.py", line 153, in login
+    raise _exception.FBchatUserError(
+fbchat._exception.FBchatUserError: Login failed. Check email/password. (Failed on url: https://m.facebook.com/login.php?login_attempt=1)
+2025-05-06 00:22:09,652 - client - ERROR - Attempt #2 failed, retrying
+Traceback (most recent call last):
+  File "C:\Users\anton\AppData\Roaming\Python\Python312\site-packages\fbchat\_client.py", line 205, in login
+    self._state = State.login(
+                  ^^^^^^^^^^^^
+  File "C:\Users\anton\AppData\Roaming\Python\Python312\site-packages\fbchat\_state.py", line 153, in login
+    raise _exception.FBchatUserError(
+fbchat._exception.FBchatUserError: Login failed. Check email/password. (Failed on url: https://m.facebook.com/login.php?login_attempt=1)
+2025-05-06 00:22:11,031 - client - ERROR - Attempt #3 failed, retrying
+Traceback (most recent call last):
+  File "C:\Users\anton\AppData\Roaming\Python\Python312\site-packages\fbchat\_client.py", line 205, in login
+    self._state = State.login(
+                  ^^^^^^^^^^^^
+  File "C:\Users\anton\AppData\Roaming\Python\Python312\site-packages\fbchat\_state.py", line 153, in login
+    raise _exception.FBchatUserError(
+fbchat._exception.FBchatUserError: Login failed. Check email/password. (Failed on url: https://m.facebook.com/login.php?login_attempt=1)
+2025-05-06 00:22:12,349 - client - ERROR - Attempt #4 failed, retrying
+Traceback (most recent call last):
+  File "C:\Users\anton\AppData\Roaming\Python\Python312\site-packages\fbchat\_client.py", line 205, in login
+    self._state = State.login(
+                  ^^^^^^^^^^^^
+  File "C:\Users\anton\AppData\Roaming\Python\Python312\site-packages\fbchat\_state.py", line 153, in login
+    raise _exception.FBchatUserError(
+fbchat._exception.FBchatUserError: Login failed. Check email/password. (Failed on url: https://m.facebook.com/login.php?login_attempt=1)
+2025-05-06 00:22:13,741 - fb_messenger_bot - ERROR - Facebook chat error: Login failed. Check email/password. (Failed on url: https://m.facebook.com/login.php?login_attempt=1)
+2025-05-06 00:22:13,742 - fb_messenger_bot - INFO - Waiting 30 seconds before reconnecting...
+2025-05-06 00:22:43,742 - fb_messenger_bot - INFO - Logging in to Facebook...
+2025-05-06 00:22:43,742 - client - INFO - Logging in thdissonance@gmail.com...
+2025-05-06 00:22:44,101 - client - ERROR - Attempt #1 failed, retrying
+Traceback (most recent call last):
+  File "C:\Users\anton\AppData\Roaming\Python\Python312\site-packages\fbchat\_client.py", line 205, in login
+    self._state = State.login(
+                  ^^^^^^^^^^^^
+  File "C:\Users\anton\AppData\Roaming\Python\Python312\site-packages\fbchat\_state.py", line 153, in login
+    raise _exception.FBchatUserError(
+fbchat._exception.FBchatUserError: Login failed. Check email/password. (Failed on url: https://m.facebook.com/login.php?login_attempt=1)
+2025-05-06 00:22:45,480 - client - ERROR - Attempt #2 failed, retrying
+Traceback (most recent call last):
+  File "C:\Users\anton\AppData\Roaming\Python\Python312\site-packages\fbchat\_client.py", line 205, in login
+    self._state = State.login(
+                  ^^^^^^^^^^^^
+  File "C:\Users\anton\AppData\Roaming\Python\Python312\site-packages\fbchat\_state.py", line 153, in login
+    raise _exception.FBchatUserError(
+fbchat._exception.FBchatUserError: Login failed. Check email/password. (Failed on url: https://m.facebook.com/login.php?login_attempt=1)
+2025-05-06 00:22:46,943 - client - ERROR - Attempt #3 failed, retrying
+Traceback (most recent call last):
+  File "C:\Users\anton\AppData\Roaming\Python\Python312\site-packages\fbchat\_client.py", line 205, in login
+    self._state = State.login(
+                  ^^^^^^^^^^^^
+  File "C:\Users\anton\AppData\Roaming\Python\Python312\site-packages\fbchat\_state.py", line 153, in login
+    raise _exception.FBchatUserError(
+fbchat._exception.FBchatUserError: Login failed. Check email/password. (Failed on url: https://m.facebook.com/login.php?login_attempt=1)
+2025-05-06 00:22:48,286 - client - ERROR - Attempt #4 failed, retrying
+Traceback (most recent call last):
+  File "C:\Users\anton\AppData\Roaming\Python\Python312\site-packages\fbchat\_client.py", line 205, in login
+    self._state = State.login(
+                  ^^^^^^^^^^^^
+  File "C:\Users\anton\AppData\Roaming\Python\Python312\site-packages\fbchat\_state.py", line 153, in login
+    raise _exception.FBchatUserError(
+fbchat._exception.FBchatUserError: Login failed. Check email/password. (Failed on url: https://m.facebook.com/login.php?login_attempt=1)
+2025-05-06 00:22:49,728 - fb_messenger_bot - ERROR - Facebook chat error: Login failed. Check email/password. (Failed on url: https://m.facebook.com/login.php?login_attempt=1)
+2025-05-06 00:22:49,728 - fb_messenger_bot - INFO - Waiting 30 seconds before reconnecting...
+2025-05-06 00:22:53,765 - INFO - Starting Facebook Messenger Bot...
+2025-05-06 00:23:04,815 - INFO - Already logged in via profile
+2025-05-06 00:23:11,412 - INFO - Navigated to Messenger
+2025-05-06 00:23:11,417 - INFO - Found 24 conversations
+2025-05-06 00:23:13,693 - INFO - Opened most recent conversation
+2025-05-06 00:23:13,693 - INFO - Starting conversation monitor...
+2025-05-06 00:24:33,775 - INFO - Monitoring stopped by user
+2025-05-06 00:24:33,777 - INFO - Closing browser
+2025-05-06 00:24:37,783 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000180242DCA70>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/53352cf7-9433-4e57-8efa-58c44a0267c7
+2025-05-06 00:24:41,802 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000180534CBFB0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/53352cf7-9433-4e57-8efa-58c44a0267c7
